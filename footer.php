@@ -1,42 +1,72 @@
-<footer>
-    <?php if (get_theme_mod('pixelo-basic-footer-callout-display') == 'Yes') { ?>
-    <p>
-        <?php 
-            $pixeloBasicFooter = get_theme_mod('pixelo-basic-footer-callout-copyright');
-            $pixeloBasicPrivacyPolicy = get_theme_mod('pixelo-basic-footer-callout-privacy-policy');
-            $pixeloBasicCookiePolicy = get_theme_mod('pixelo-basic-footer-callout-cookie-policy');
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package pixelo
+ */
 
-            if ($pixeloBasicPrivacyPolicy == "" || $pixeloBasicPrivacyPolicy == null) {
-                echo "<a href='/privacy'>".__( 'Privacy Policy', 'pixelo' )."</a> /";
-            }
-            else {
-                echo "<a href='". $pixeloBasicPrivacyPolicy ."'>".__( 'Privacy Policy', 'pixelo' )."</a> / ";
-            }
-            if ($pixeloBasicCookiePolicy == "" || $pixeloBasicCookiePolicy == null) {
-                echo "<a href='/policy'>".__( 'Cookie Policy', 'pixelo' )."</a>";
-            }
-            else {
-                echo "<a href='". $pixeloBasicCookiePolicy ."'>".__( 'Cookie Policy', 'pixelo' )."</a>";
-            }
+?>
 
-        ?>
-    </p>
-    <?php } ?>
+        </div><!-- #side content -->
+        <?php if( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) ) : ?>
+            <div class="footer__widget-section">
+                <div class="wrapper"> 
+                    <div class="footer-widget">
+                        <div class="single-widget">
+                            <?php 
+                                
+                                if ( is_active_sidebar( 'footer-1' ) ) {
+                                    dynamic_sidebar( 'footer-1' );
+                                }
 
-    <p>
-        <?php
-            $thisYear = date("Y");
-            $blog_title = get_bloginfo();
-            $pixeloBasicFooter = get_theme_mod('pixelo-basic-footer-callout-copyright');
+                            ?>
+                        </div>
+                        <div class="single-widget">
+                            <?php 
+                                
+                                if ( is_active_sidebar( 'footer-2' ) ) {
+                                    dynamic_sidebar( 'footer-2' );
+                                }
 
-            if ($pixeloBasicFooter == "" || $pixeloBasicFooter == null) {
-                $pixeloBasicFooter = __( "&copy; ", 'pixelo' ) . $thisYear . " " . $blog_title . " / ".__( 'Designed & Built by', 'pixelo' )." <a href='https://www.pixelo.com/' target='_blank'>".__( 'Pixelo', 'pixelo' )."</a>";
-            }
-            echo $pixeloBasicFooter;
+                            ?>
+                        </div>
+                        <div class="single-widget">
+                            <?php
+                                
+                                if ( is_active_sidebar( 'footer-3' ) ) {
+                                    dynamic_sidebar( 'footer-3' );
+                                }
 
-        ?>
-    </p>
-</footer>
-</div> 
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <footer class="site-footer">
+            <div class="coyyright-section">
+                <p>
+                    <?php
 
-<?php wp_footer() ?>
+                        echo date_i18n(
+                            _x( '©Y', 'copyright date format', 'pixelo' )
+                        );
+
+                    ?>
+                    <span>
+                        <?php echo bloginfo('name'); ?>
+                        <?php printf( __( '/ Pixelo WordPress Theme by', 'pixelo' ) ); ?>
+                    </span> 
+                    <a href="<?php echo esc_url( __( 'https://www.engramium.com/', 'pixelo' ) ); ?>" target='_blank'><?php printf( __( 'Engramium', 'pixelo' ) ); ?></a>
+                </p>
+            </div>
+        </footer>
+
+        <?php wp_footer(); ?>
+
+    </body>
+</html>

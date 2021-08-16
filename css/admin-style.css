@@ -1,0 +1,12 @@
+/*=====================
+Metabox Style
+=====================*/
+
+.pixelo__base-control-field {
+	margin-bottom: 12px;
+}
+
+.pixelo__base-control-field select {
+	width: 84%;
+	padding: 4px 16px 4px 10px;
+}

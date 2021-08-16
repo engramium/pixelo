@@ -21,13 +21,6 @@ jQuery( document ).ready(function() {
             // console.log("isOpen");
             isOpen++;
         } 
-        else {
-            TweenMax.fromTo(mobileNav, 0.5, { opacity: 1, y: -46 }, { opacity: 0, y: 0, display:'none' });
-            jQuery(openBurger).show();
-            jQuery(closeBurger).hide();
-            isOpen--;
-            // console.log("isClosed");
-        }
     });
 
     jQuery('#search__button').click(function(){
@@ -36,16 +29,10 @@ jQuery( document ).ready(function() {
         TweenLite.to('#search__popup', 0.5, { display:'block', opacity: 1, ease: " power2. inOut", y: -46 });
         isOpenSearch++;
       }
-      else{
-        jQuery("#search_underlayer").hide();
-        TweenMax.fromTo('#search__popup', 0.5, { opacity: 1, y: -46 }, { opacity: 0, y: 0, display:'none' });
-        isOpenSearch--;
-      }
     });
 
     jQuery('#search_underlayer').click(function(){
         jQuery("#search_underlayer").hide();
-        TweenMax.fromTo('#search__popup', 0.5, { opacity: 1, y: -46 }, { opacity: 0, y: 0, display:'none' });
         isOpenSearch--;
     });
 
@@ -99,6 +86,7 @@ jQuery( document ).ready(function() {
     if('objectFit' in document.documentElement.style === false) {
         ObjectFitIt();
     }
+
 });
 
 

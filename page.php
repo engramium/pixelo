@@ -1,18 +1,48 @@
-<?php get_header(); ?>
 <?php
-    if(have_posts()) {
-    while(have_posts()) : the_post();
+/**
+ * The template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package pixelo
+ */
+
+get_header();
 ?>
-<main class="row single-page">
-    <?php if ( has_post_thumbnail() ) { ?>
-    <div class="hero-image">
-        <?php the_post_thumbnail('large', ['class' => 'objFit'], array('title' => get_the_title() )); ?>
-    </div>
-    <?php } ?>
-    <h1 class="heading"><?php the_title(); ?></h1>
-    <?php the_content();?>
+
+<div class="site-content-inner pixelo-container">
+
     <?php 
-        endwhile; } 
+        /**
+         * pixelo_left_sidebar hook.
+         *
+         * @hooked pixelo_left_sidebar (outputs page left sidebar)
+         */
+        do_action( 'pixelo_left_sidebar' ); 
+  
+        /**
+         * pixelo_page_content hook.
+         *
+         * @hooked pixelo_page_content (outputs page content)
+         */
+        do_action( 'pixelo_page_content' ); 
+ 
+        /**
+         * pixelo_right_sidebar hook.
+         *
+         * @hooked pixelo_right_sidebar (outputs page right sidebar)
+         */
+        do_action( 'pixelo_right_sidebar' ); 
+        
     ?>
-</main>
+    
+</div><!-- .site-content-inner -->
+
 <?php get_footer(); ?>
+
+

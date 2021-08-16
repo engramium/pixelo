@@ -1,74 +1,53 @@
 <?php
-/*
-Template Name: Search Page
-*/
+/**
+ * The template for displaying search results pages
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ *
+ * @package pixelo
+ */
+
 get_header();
 ?>
 
+    <main id="primary" class="site-main search__results">
+
+        <?php if ( have_posts() ) : ?>
+
+            <header class="page-header">
+                <h1 class="page-title">
+                    <?php
+                    /* translators: %s: search query. */
+                    printf( esc_html__( 'Search Results for: %s', 'pixelo' ), '<span>' . get_search_query() . '</span>' );
+                    ?>
+                </h1>
+            </header><!-- .page-header -->
+
+            <?php
+            /* Start the Loop */
+            while ( have_posts() ) :
+                the_post();
+
+                /**
+                 * Run the loop for the search to output the results.
+                 * If you want to overload this in a child theme then include a file
+                 * called content-search.php and that will be used instead.
+                 */
+                get_template_part( 'template-parts/content', 'search' );
+
+            endwhile;
+
+            the_posts_navigation();
+
+        else :
+
+            get_template_part( 'template-parts/content', 'none' );
+
+        endif;
+        ?>
+
+    </main><!-- #main -->
+
 <?php
-    global $query_string;
-    $query_args = explode("&", $query_string);
-    $search_query = array();
+get_footer();
 
-    foreach($query_args as $key => $string) {
-      $query_split = explode("=", $string);
-      $search_query[$query_split[0]] = urldecode($query_split[1]);
-    } // foreach
-
-    $the_query = new WP_Query($search_query);
-    if ( $the_query->have_posts() ) : 
-    ?>
-    <!-- the loop -->
-
-	<main class="container search__results">
-    <h1 class="heading"><?php _e( 'Search Results...', 'pixelo' ) ?></h1>
-    <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-	
-<article class="row row-padding"  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <div class="col-6 thumbnail">
-        <a href="<?php the_permalink();?>">
-        <?php
-            // Check If Post is New
-            if( strtotime( $post->post_date ) > strtotime('-20 days') ) {
-                echo "<div class='newpost'>"__( 'NEW', 'pixelo' )"</div>";
-            }
-        ?>
-        <?php  
-            if ( has_post_thumbnail() ) {
-                the_post_thumbnail('medium_large', ['class' => 'objFit', 'loading' => 'lazy'], array('title' => get_the_title() ));
-            } else {
-            echo '<img src="' . get_stylesheet_directory_uri( 'stylesheet_directory' ) 
-            . '/images/thumbnail-default.jpg" alt="Missing Image"/>';
-            }
-        ?>
-        </a>
-    </div> 
-    <div class="col-6 content">
-        <a href="<?php the_permalink(); ?>">
-        <h2><?php the_title(); ?></h2>
-        <p>
-        <?php
-            // Making an excerpt of the blog post content
-            $excerpt = strip_tags($post->post_content);
-            if (strlen($excerpt) > 198) {
-                $excerpt = substr($excerpt, 0, 198);
-                $excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
-                $excerpt .= '...';
-            }
-            echo $excerpt;
-        ?>
-        </p>
-        </a>
-    </div>
-</article>
-    <?php endwhile; ?>
-
-    <!-- end of the loop -->
-    <?php wp_reset_postdata(); ?>
-
-	<?php else : ?>
-		<h1><?php _e( 'Sorry, no posts matched your criteria.', 'pixelo'); ?></h1>
-	<?php endif; ?>
-	</main>
-
-<?php get_footer();

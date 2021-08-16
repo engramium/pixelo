@@ -1,0 +1,215 @@
+/*
+Theme Name:        Pixelo
+Theme URI: 	  	   https://pixelo.com/
+Author:            Pixelo Team
+Author URI:   	   https://pixelo.com/pixelo/
+Description:       Added support for language written in a Right To Left (RTL) direction. stylesheet file named style-rtl.css.
+Version:           0.0.2
+Requires at least: 5.0
+Tested up to:      5.7
+Requires PHP:      5.4
+Text Domain:       pixelo
+License:           GNU General Public License v2 or later
+License URI:       http://www.gnu.org/licenses/gpl-2.0.html
+Tags:              one-column, two-columns, custom-colors, custom-menu, custom-logo, editor-style, featured-images, theme-options, translation-ready
+*/
+
+.alignleft {
+	text-align: right;
+}
+
+.alignright {
+	text-align: left;
+}
+
+body {
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+.single-product.woocommerce .quantity .qty {
+	text-align: right;
+
+}
+
+table th,
+table td {
+	text-align: right;
+}
+
+#toggleMyMenu ul li a {
+	text-align: right;
+}
+
+.pixelo__header-section .header-titles {
+	text-align: right;
+}
+
+[class*="col-"] {
+	float: right;
+}
+
+.comment-body .comment-author img {
+	float: right;
+	margin: 0 0 0 1em;
+}
+
+.blog_wrap-item .post-meta a {
+	float: right;
+	padding: 20px 24px 20px 0;
+}
+
+.single-product.woocommerce .flex-control-thumbs li {
+	float: right;
+}
+
+.search-toggle-wrapper {
+	position: absolute;
+	left: 0;
+}
+
+@media (min-width: 1000px) {
+	.pixelo__header-section .header-navigation-wrapper {
+		padding-left: 50px;
+	}
+}
+
+ul ul,
+ol ul {
+	margin-right: 15px;
+}
+
+ol ol,
+ul ol {
+	margin-right: 15px;
+}
+
+.comment-body .comment-edit-link {
+	margin-right: 5px;
+}
+
+.comment-content {
+	clear: right;
+}
+
+.commentmetadata + p {
+	margin: 0.8em 61px 0.2em 0;
+}
+
+.comment .reply {
+	text-align: left;
+}
+
+.comments-area ol ol {
+	margin-right: 6%;
+}
+
+.comment-reply-title > small {
+	margin-right: 15px;
+}
+
+.social .newsletter .subscribebutton {
+	float: left;
+
+}
+
+.social #search__popup {
+	left: auto;
+	right: 0;
+}
+
+#toggleMyMenu {
+	left: auto;
+	right: 0;
+	z-index: -99;
+}
+
+.menu-item-has-children::after {
+	left: 20px;
+	content: "";
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+
+}
+
+#toggleMyMenu ul li .sub-menu {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#toggleMyMenu ul li .sub-menu .sub-menu {
+	margin-left: 0;
+}
+
+.menu-item-has-children::after {
+	position: absolute;
+	left: 0;
+	top: 9px;
+	content: "";
+	width: 0;
+	height: 0;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+	border-top: 5px solid #000;
+	pointer-events: none;
+}
+
+.primary-menu ul::after {
+	left: 1.8rem;
+}
+
+.pixelo__header-section .primary-menu > li.menu-item-has-children > a {
+	padding-left: 2rem;
+}
+
+.pixelo__header-section .primary-menu > li > .icon {
+	left: -0.5rem;
+
+}
+
+.pixelo__header-section .primary-menu ul {
+	left: 9999rem;
+
+}
+
+.pixelo__header-section .primary-menu li.menu-item-has-children:hover > ul,
+.pixelo__header-section .primary-menu li.menu-item-has-children:focus > ul,
+.pixelo__header-section .primary-menu li.menu-item-has-children.focus > ul {
+	left: 0;
+}
+
+.pixelo__header-section .primary-menu ul::before {
+	left: auto;
+	right: 0;
+}
+
+.pixelo__header-section .primary-menu ul::after {
+	left: 1.8rem;
+}
+
+.pixelo__header-section .primary-menu ul ul::before {
+	right: auto;
+	left: -2rem;
+
+}
+
+.pixelo__header-section .primary-menu ul ul::after {
+	left: -1.6rem;
+
+}
+
+body.touch-enabled .primary-menu > li.menu-item-has-children > a {
+	padding-left: 0;
+	margin-left: 2rem;
+}
+
+body.touch-enabled .primary-menu ul li.menu-item-has-children > a {
+	margin-left: 4.5rem;
+
+}
+
+.pixelo__header-section .menu-modal {
+	left: 99999rem;
+	right: -99999rem;
+	
+}
